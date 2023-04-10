@@ -12,6 +12,7 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
+import { authReducer } from './user/userSlice';
 
 const persistConfig = {
   key: 'token',
@@ -19,7 +20,7 @@ const persistConfig = {
   whiteList: ['token'],
 };
 
-const persistReducerUser = persistReducer(persistConfig);
+const persistReducerUser = persistReducer(persistConfig, authReducer);
 
 export const store = configureStore({
   reducer: {
