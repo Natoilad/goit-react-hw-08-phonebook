@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { loginUser, singUpUser, token } from 'service/userApi';
+import { currentUser, loginUser, singUpUser, token } from 'service/userApi';
 
 export const singUpThunk = createAsyncThunk(
   'auth/singUp',
@@ -43,7 +43,12 @@ export const refreshUserThunk = createAsyncThunk(
   'auth/refreshUser',
   async (_, { rejectWithValue, getState }) => {
     try {
-      const { data } = await loginUser();
+      const sessionToken = getState().auth.token;
+      if (!sessionToken) {
+        return rejectWithValue('Please Login');
+      }
+      token.set(sessionToken);
+      const { data } = await currentUser();
       token.unset();
       return data;
     } catch (error) {
