@@ -9,7 +9,7 @@ export const token = {
   },
 };
 
-export const singUpUser = async credentials => {
+export const signUpUser = async credentials => {
   const { data } = await backendAPI.post('users/signup', credentials);
   return data;
 };
