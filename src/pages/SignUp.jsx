@@ -1,16 +1,21 @@
+import { logoutThunk } from 'redux/user/userThunk';
+
 const { useState } = require('react');
 const { Container, Form, Button } = require('react-bootstrap');
 const { useDispatch } = require('react-redux');
-const { loginThunk } = require('redux/user/userThunk');
 
-const Login = () => {
+const SignUp = () => {
   const dispatch = useDispatch();
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const handleChange = evt => {
     const [name, value] = evt.target;
     switch (name) {
+      case name:
+        setName(value);
+        break;
       case email:
         setEmail(value);
         break;
@@ -24,7 +29,7 @@ const Login = () => {
   };
   const handleOnSubmit = evt => {
     evt.preventDefault();
-    dispatch(loginThunk({ email, password }))
+    dispatch(logoutThunk({ email, password, name }))
       .unwrap()
       .then(() => {
         setEmail('');
@@ -35,6 +40,19 @@ const Login = () => {
   return (
     <Container>
       <Form onSubmit={handleOnSubmit}>
+        <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form.Label>User Name</Form.Label>
+          <Form.Control
+            onChange={handleChange}
+            name="name"
+            value={name}
+            type="text"
+            placeholder="Enter your  name"
+          />
+          <Form.Text className="text-muted">
+            We'll never share your email with anyone else.
+          </Form.Text>
+        </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
           <Form.Control
@@ -66,4 +84,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default SignUp;
