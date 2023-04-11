@@ -10,6 +10,7 @@ const { getContactsThunk } = require('redux/contactsThunk');
 const Contacts = () => {
   const dispatch = useDispatch();
   const contacts = useSelector(state => state.contacts.items);
+  console.log(contacts);
   const filtered = useSelector(state => state.filter);
   const filterContact = e => {
     const filteredContacts = contacts.filter(contact =>

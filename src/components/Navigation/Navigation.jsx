@@ -29,8 +29,8 @@ const Navigation = () => {
           <InfoUser />
         </Container>
       </Navbar>
-      <Container className="d-flex flex-column justify-content-center align-items-center">
-        <h1>Welcome to PhoneBook</h1>
+      <Container className="align-items-center d-flex flex-column justify-content-center ">
+        <h1>Welcome</h1>
       </Container>
     </>
   );

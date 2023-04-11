@@ -1,8 +1,8 @@
+// import { Form } from 'react-router-dom';
+import { Button, Container, Form } from 'react-bootstrap';
 import { logoutThunk } from 'redux/user/userThunk';
-
-const { useState } = require('react');
-const { Container, Form, Button } = require('react-bootstrap');
 const { useDispatch } = require('react-redux');
+const { useState } = require('react');
 
 const SignUp = () => {
   const dispatch = useDispatch();
