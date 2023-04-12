@@ -12,10 +12,17 @@ const InfoUser = () => {
   return (
     <div>
       {user && (
-        <>
-          <h4>Welcome {user.name}</h4>
-          <Button onSubmit={handleSubmit}> Log Out</Button>
-        </>
+        <div className=" d-flex gap=10">
+          {/* <h4 className="text-light ">Welcome, {user.name}</h4> */}
+          <Button
+            bg="black"
+            variant="dark"
+            className="d-flex "
+            onClick={handleSubmit}
+          >
+            Log Out
+          </Button>
+        </div>
       )}
     </div>
   );

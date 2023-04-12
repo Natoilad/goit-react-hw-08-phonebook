@@ -37,13 +37,3 @@ export const store = configureStore({
 });
 
 export const persistR = persistStore(store);
-
-// import { sliceFilter } from './sliceFilter';
-
-// import { sliceContact } from './sliceContact';
-// export const store = configureStore({
-//   reducer: {
-//     contacts: contactsReducer,
-//     filter: filterReducer,
-//   },
-// });

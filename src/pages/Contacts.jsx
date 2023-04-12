@@ -10,7 +10,6 @@ const { getContactsThunk } = require('redux/contactsThunk');
 const Contacts = () => {
   const dispatch = useDispatch();
   const contacts = useSelector(state => state.contacts.items);
-  console.log(contacts);
   const filtered = useSelector(state => state.filter);
   const filterContact = e => {
     const filteredContacts = contacts.filter(contact =>
@@ -23,9 +22,7 @@ const Contacts = () => {
   }, [dispatch]);
   return (
     <div className={css.container}>
-      <h1>Phonebook</h1>
       <ContactForm />
-      <h2>Contacts</h2>
       <Filter />
       <ContactList listContact={filterContact()} />
     </div>

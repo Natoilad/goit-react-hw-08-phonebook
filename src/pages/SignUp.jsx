@@ -1,6 +1,6 @@
 // import { Form } from 'react-router-dom';
 import { Button, Container, Form } from 'react-bootstrap';
-import { logoutThunk } from 'redux/user/userThunk';
+import { signUpThunk } from 'redux/user/userThunk';
 const { useDispatch } = require('react-redux');
 const { useState } = require('react');
 
@@ -11,15 +11,15 @@ const SignUp = () => {
   const [password, setPassword] = useState('');
 
   const handleChange = evt => {
-    const [name, value] = evt.target;
+    const { name, value } = evt.target;
     switch (name) {
-      case name:
+      case 'name':
         setName(value);
         break;
-      case email:
+      case 'email':
         setEmail(value);
         break;
-      case password:
+      case 'password':
         setPassword(value);
         break;
 
@@ -29,7 +29,7 @@ const SignUp = () => {
   };
   const handleOnSubmit = evt => {
     evt.preventDefault();
-    dispatch(logoutThunk({ email, password, name }))
+    dispatch(signUpThunk({ email, password, name }))
       .unwrap()
       .then(() => {
         setEmail('');
@@ -76,7 +76,7 @@ const SignUp = () => {
             placeholder="Password"
           />
         </Form.Group>
-        <Button variant="primary" type="submit">
+        <Button bg="black" variant="dark" type="submit">
           Log in
         </Button>
       </Form>

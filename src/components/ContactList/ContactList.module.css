@@ -1,7 +1,7 @@
 .listItem {
   display: flex;
   justify-content: space-between;
-  width: 430px;
+  width: 370px;
   margin: 5px;
 }
 .phone {

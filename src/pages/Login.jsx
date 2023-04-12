@@ -9,12 +9,12 @@ const Login = () => {
   const [password, setPassword] = useState('');
 
   const handleChange = evt => {
-    const [name, value] = evt.target;
+    const { name, value } = evt.target;
     switch (name) {
-      case email:
+      case 'email':
         setEmail(value);
         break;
-      case password:
+      case 'password':
         setPassword(value);
         break;
 
@@ -22,16 +22,29 @@ const Login = () => {
         throw new Error();
     }
   };
-  const handleOnSubmit = evt => {
-    evt.preventDefault();
+  // const handleOnSubmit = evt => {
+  //   evt.preventDefault();
+  //   dispatch(loginThunk({ email, password }))
+  //     .unwrap()
+  //     .then(() => {
+  //       setEmail('');
+  //       setPassword('');
+  //     })
+  //     .catch(() => alert('Please enter all input'));
+  // };
+
+  const handleOnSubmit = event => {
+    event.preventDefault();
+
     dispatch(loginThunk({ email, password }))
       .unwrap()
       .then(() => {
         setEmail('');
         setPassword('');
       })
-      .catch(() => alert('Please enter all input'));
+      .catch(() => alert('Please fill all fields'));
   };
+
   return (
     <Container>
       <Form onSubmit={handleOnSubmit}>
@@ -58,7 +71,7 @@ const Login = () => {
             placeholder="Password"
           />
         </Form.Group>
-        <Button variant="primary" type="submit">
+        <Button bg="black" variant="dark" className="d-flex " type="submit">
           Log in
         </Button>
       </Form>

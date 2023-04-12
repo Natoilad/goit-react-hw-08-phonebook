@@ -1,5 +1,11 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { currentUser, loginUser, signUpUser, token } from 'service/userApi';
+import {
+  currentUser,
+  loginUser,
+  logoutUser,
+  signUpUser,
+  token,
+} from 'service/userApi';
 
 export const signUpThunk = createAsyncThunk(
   'auth/singUp',
@@ -17,7 +23,7 @@ export const loginThunk = createAsyncThunk(
   'auth/login',
   async (credentials, { rejectWithValue }) => {
     try {
-      const { data } = await loginUser(credentials);
+      const data = await loginUser(credentials);
       token.set(data.token);
       return data;
     } catch (error) {
@@ -30,9 +36,8 @@ export const logoutThunk = createAsyncThunk(
   'auth/logout',
   async (_, { rejectWithValue }) => {
     try {
-      const { data } = await loginUser();
-      token.unset();
-      return data;
+      await logoutUser();
+      token.unSet();
     } catch (error) {
       return rejectWithValue(error.message);
     }
@@ -48,9 +53,8 @@ export const refreshUserThunk = createAsyncThunk(
         return rejectWithValue('Please Login');
       }
       token.set(sessionToken);
-      const { data } = await currentUser();
-      token.unset();
-      return data;
+      const data = await currentUser();
+      return data.data;
     } catch (error) {
       return rejectWithValue(error.message);
     }

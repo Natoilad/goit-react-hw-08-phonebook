@@ -7,16 +7,13 @@ export const Filter = () => {
   const dispatch = useDispatch();
   return (
     <>
-      <label htmlFor="">
-        <span>Find contacts by name</span>
-      </label>
       <input
         className={css.input}
         value={filter}
         onChange={evt => dispatch(filterContact(evt.currentTarget.value))}
         type="text"
         name="filter"
-        placeholder="Find contacts by name"
+        placeholder="Search contacts by name"
       />
     </>
   );

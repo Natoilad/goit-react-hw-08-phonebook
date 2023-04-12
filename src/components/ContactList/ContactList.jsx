@@ -9,7 +9,7 @@ export const ContactList = ({ listContact }) => {
     return (
       <p key={cont.id} className={css.listItem}>
         <span className={css.phone}>
-          {cont.name}: {cont.phone}
+          {cont.name}: {cont.number}
         </span>
         <button
           className={css.btn}
